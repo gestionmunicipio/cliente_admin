@@ -1,0 +1,82 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Lista de Clientes</h2>
+{% if perms.clientes.change_cliente %}
+  <a href="{% url 'agregar_cliente' %}">
+    <button>➕ Nuevo Cliente</button>
+  </a>
+{% endif %}
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Teléfono</th>
+      <th>RUT</th>
+      <th>Dirección</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cliente in clientes %}
+    <tr class="{% cycle 'par' 'impar' %}">
+      <td>{{ cliente.nombre }}</td>
+      <td>{{ cliente.email }}</td>
+      <td>{{ cliente.telefono }}</td>
+      <td>{{ cliente.rut }}</td>
+      <td>{{ cliente.direccion }}</td>
+      <td>{{ cliente.estado }}</td>
+      <td>
+     <!--   <a href="{% url 'editar_cliente' cliente.id %}">✏️ Editar</a> |
+        <a href="{% url 'eliminar_cliente' cliente.id %}">🗑️ Eliminar</a>
+      -->
+    {% if perms.clientes.change_cliente %}
+      <a href="{% url 'editar_cliente' cliente.id %}">✏️ Editar</a> |
+    {% endif %}
+    {% if perms.clientes.delete_cliente %}
+      <a href="{% url 'eliminar_cliente' cliente.id %}">🗑️ Eliminar</a>
+    {% endif %}      
+    
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="7">No hay clientes registrados.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  thead {
+    background-color: #2c3e50;
+    color: white;
+  }
+  tr.par {
+    background-color: #f9f9f9;
+  }
+  tr.impar {
+    background-color: #eaeaea;
+  }
+  tr:hover {
+    background-color: #d6eaf8;
+  }
+</style>
+{% endblock %}
+
+
+

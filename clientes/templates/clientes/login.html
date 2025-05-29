@@ -1,0 +1,17 @@
+
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Iniciar Sesión</h2>
+{% if error %}
+  <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+  <label>Usuario:</label>
+  <input type="text" name="username">
+  <label>Contraseña:</label>
+  <input type="password" name="password">
+  <button type="submit">Ingresar</button>
+</form>
+{% endblock %}

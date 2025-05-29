@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Clientes</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    header img {
+      height: 40px;
+      margin-right: 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    .container {
+      display: flex;
+      flex: 1;
+      margin-top: 80px;
+      margin-bottom: 60px;
+    }
+    nav {
+      width: 220px;
+      background-color: #34495e;
+      padding: 1rem;
+      min-height: 100%;
+    }
+    nav a {
+      display: block;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      flex: 1;
+      padding: 2rem;
+    }
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .logo {
+      /*height: 40px;*/
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center;">
+      {% load static %}
+      <img src="{% static 'images/Logo-CIDLA-color-3.png' %}" alt="Logo" class="logo">
+      <h1>Administración de Clientes</h1>
+    </div>
+  </header>
+  <div class="container">
+    <nav>
+      <a href="/">🏠 Inicio</a>
+      {% if perms.clientes.change_cliente %}
+        <a href="/nuevo/">➕ Nuevo Cliente</a>
+      {% endif %}
+      <a href="/logout/">🚪 Cerrar Sesión</a>
+    </nav>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  <footer>
+    &copy; 2025 Sistema de Gestión de Clientes
+  </footer>
+</body>
+</html>
