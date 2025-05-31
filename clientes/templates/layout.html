@@ -100,28 +100,30 @@
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div style="display: flex; align-items: center;">
-      {% load static %}
-      <img src="{% static 'images/logo-cidla.png' %}" alt="Logo" class="logo">
-      <h1>Administración de Clientes</h1>
+    <header>
+        <div style="display: flex; align-items: center;">
+            {% load static %}
+            <img src="{% static 'images/logo-cidla.png' %}" alt="Logo" class="logo">
+            <h1>Administración de Clientes</h1>
+        </div>
+    </header>
+    <div class="container">
+        <nav>
+            <a href="/">🏠 Inicio</a>
+            {% if perms.clientes.change_cliente %}
+              <a href="/nuevo/">➕ Nuevo Cliente</a>
+            {% endif %}
+            <a href="/logout/">🚪 Cerrar Sesión</a>
+        </nav>
+        <main>
+          {% block content %}{% endblock %}
+        </main>
     </div>
-  </header>
-  <div class="container">
-    <nav>
-      <a href="/">🏠 Inicio</a>
-      {% if perms.clientes.change_cliente %}
-        <a href="/nuevo/">➕ Nuevo Cliente</a>
-      {% endif %}
-      <a href="/logout/">🚪 Cerrar Sesión</a>
-    </nav>
-    <main>
-      {% block content %}{% endblock %}
-    </main>
-  </div>
-  <footer>
-    &copy; 2025 Sistema de Gestión de Clientes
-  </footer>
+    <footer>
+        &copy; 2025 Sistema de Gestión de Clientes
+    </footer>
 </body>
+
 </html>
