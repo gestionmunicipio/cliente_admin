@@ -4,23 +4,3 @@
     .: Se configura el estilo de las clases
 */
 
-*{
-    margin: 0px;
-    padding: 0px;
-    font-family:sans-serif, Arial, Helvetica;
-    text-decoration: none;
-}
-
-/* Estilos cabeceras */
-header{
-     margin: 0px;
-     padding: 0px;
-}
-
-.header-icons {
-    display: flex;
-    gap: 5px; /* Ajusta el espacio entre los íconos */
-    margin: 0;
-    padding: 0;
-}
-

@@ -128,12 +128,10 @@ LANGUAGES = [
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Para asegurar que Render detecte la app
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'clientes/static/')]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'clientes/static'),
+]
 
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'clientes/static'),
-#]
 
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
