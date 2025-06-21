@@ -1,24 +1,28 @@
-
 {% extends 'layout.html' %}
-
+{% load i18n %}
 {% block content %}
-<h2>Lista de Clientes</h2>
+<h2>{% trans "Lista de Clientes" %}</h2>
 {% if perms.clientes.change_cliente %}
   <a href="{% url 'agregar_cliente' %}">
-    <button>➕ Nuevo Cliente</button>
+    <button>➕ {% trans "Nuevo Cliente" %}</button>
   </a>
 {% endif %}
+
+<div style="margin-bottom: 20px;">
+    <a href="{% url 'exportar_excel' %}"><button>{% trans "Exportar a Excel" %}</button></a>
+    <a href="{% url 'exportar_pdf' %}"><button>{% trans "Exportar a PDF" %}</button></a>
+</div>
 
 <table>
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Email</th>
-      <th>Teléfono</th>
-      <th>RUT</th>
-      <th>Dirección</th>
-      <th>Estado</th>
-      <th>Acciones</th>
+      <th>{% trans "Nombre" %}</th>
+      <th>{% trans "Email" %}</th>
+      <th>{% trans "Teléfono" %}</th>
+      <th>{% trans "Rut" %}</th>
+      <th>{% trans "Dirección" %}</th>
+      <th>{% trans "Estado" %}</th>
+      <th>{% trans "Acciones" %}</th>
     </tr>
   </thead>
   <tbody>
@@ -35,10 +39,10 @@
         <a href="{% url 'eliminar_cliente' cliente.id %}">🗑️ Eliminar</a>
       -->
     {% if perms.clientes.change_cliente %}
-      <a href="{% url 'editar_cliente' cliente.id %}">✏️ Editar</a> |
+      <a href="{% url 'editar_cliente' cliente.id %}">✏️ {% trans "Editar" %}</a> |
     {% endif %}
     {% if perms.clientes.delete_cliente %}
-      <a href="{% url 'eliminar_cliente' cliente.id %}">🗑️ Eliminar</a>
+      <a href="{% url 'eliminar_cliente' cliente.id %}">🗑️ {% trans "Eliminar" %}</a>
     {% endif %}      
     
       </td>

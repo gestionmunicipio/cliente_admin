@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+
+{% block content %}
+<h2>{% trans "*** Lista de Clientes ****" %}</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>{% trans "Nombre" %}</th>
+      <th>{% trans "Rut" %}</th>
+      <th>{% trans "Email" %}</th>
+      <th>{% trans "Teléfono" %}</th>
+      <th>{% trans "Estado" %}</th>
+      <th>{% trans "Acciones" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cliente in clientes %}
+      <tr>
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.rut }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>{{ cliente.telefono }}</td>
+        <td>{{ cliente.estado }}</td>
+        <td>
+       </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="6">{% trans "No hay clientes registrados." %}</td></tr>
+    {% endfor %}         
+    <a href="{% url 'editar_cliente' cliente.pk %}">{% trans "Editar" %}</a> |
+    <a href="{% url 'eliminar_cliente' cliente.pk %}">{% trans "Eliminar" %}</a>
+  
+  </tbody>
+</table>
+{% endblock %}

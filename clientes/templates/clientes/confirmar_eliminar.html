@@ -1,11 +1,12 @@
 
 {% extends 'layout.html' %}
+{% load i18n %}
 {% block content %}
-<h2>¿Estás seguro que deseas eliminar a {{ cliente.nombre }}?</h2>
+<h2>{% trans "¿Estás seguro que deseas eliminar a" %} {{ cliente.nombre }}?</h2>
 <form method="post">
   {% csrf_token %}
   <button type="submit">Sí, eliminar</button>
-  <a href="{% url 'lista_clientes' %}">Cancelar</a>
+  <a href="{% url 'lista_clientes' %}">{% trans "Cancelar" %}</a>
 </form>
 {% endblock %}
 

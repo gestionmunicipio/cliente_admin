@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+
+{% block content %}
+<h2>{% trans "¿Estás seguro que deseas eliminar esta dirección?" %}</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <p>{{ direccion.calle }}, {{ direccion.ciudad }}, {{ direccion.region }} ({{ direccion.codigo_postal }})</p>
+  <button type="submit">{% trans "Sí, eliminar" %}</button>
+  <a href="{% url 'editar_cliente' cliente_id %}">{% trans "Cancelar" %}</a>
+</form>
+{% endblock %}

@@ -1,0 +1,208 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-14 22:45-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\clientes\models.py:23 .\clientes\templates\clientes\lista.html:14
+#: .\clientes\templates\clientes\lista_clientes.html:10
+msgid "Nombre"
+msgstr "Nombre"
+
+#: .\clientes\models.py:25 .\clientes\templates\clientes\lista.html:17
+#: .\clientes\templates\clientes\lista_clientes.html:11
+msgid "Rut"
+msgstr "Rut"
+
+#: .\clientes\models.py:27 .\clientes\templates\clientes\lista.html:16
+#: .\clientes\templates\clientes\lista_clientes.html:13
+msgid "Teléfono"
+msgstr "Teléfono"
+
+#: .\clientes\models.py:29 .\clientes\templates\clientes\lista.html:19
+#: .\clientes\templates\clientes\lista_clientes.html:14
+msgid "Estado"
+msgstr "Estado"
+
+#: .\clientes\models.py:30
+msgid "Observación"
+msgstr "Observación"
+
+#: .\clientes\templates\clientes\confirmar_eliminar.html:5
+msgid "¿Estás seguro que deseas eliminar a"
+msgstr "¿Estás seguro que deseas eliminar a"
+
+#: .\clientes\templates\clientes\confirmar_eliminar.html:9
+#: .\clientes\templates\clientes\confirmar_eliminar_direccion.html:11
+#: .\clientes\templates\clientes\direccion_formulario.html:11
+#: .\clientes\templates\clientes\formulario.html:164
+msgid "Cancelar"
+msgstr "Cancelar"
+
+#: .\clientes\templates\clientes\confirmar_eliminar_direccion.html:5
+msgid "¿Estás seguro que deseas eliminar esta dirección?"
+msgstr "¿Estás seguro que deseas eliminar esta dirección?"
+
+#: .\clientes\templates\clientes\confirmar_eliminar_direccion.html:10
+msgid "Sí, eliminar"
+msgstr "Sí, eliminar"
+
+#: .\clientes\templates\clientes\direccion_formulario.html:10
+#: .\clientes\templates\clientes\formulario.html:163
+msgid "Guardar"
+msgstr "Guardar"
+
+#: .\clientes\templates\clientes\formulario.html:6
+msgid "Editar Cliente"
+msgstr "Editar Cliente"
+
+#: .\clientes\templates\clientes\formulario.html:8
+#: .\clientes\templates\clientes\lista.html:7
+#: .\clientes\templates\layout.html:165
+msgid "Nuevo Cliente"
+msgstr "Nuevo Cliente"
+
+#: .\clientes\templates\clientes\formulario.html:17
+msgid "Datos del Cliente"
+msgstr "Datos del Cliente"
+
+#: .\clientes\templates\clientes\formulario.html:30
+msgid "Direcciones del Cliente"
+msgstr "Direcciones del Cliente"
+
+#: .\clientes\templates\clientes\formulario.html:50
+msgid "Agregar otra dirección"
+msgstr "Agregar otra dirección"
+
+#: .\clientes\templates\clientes\formulario.html:87
+msgid "Direcciones Registradas"
+msgstr "Direcciones Registradas"
+
+#: .\clientes\templates\clientes\formulario.html:90
+#: .\clientes\templates\clientes\formulario.html:95
+msgid "Nueva Dirección"
+msgstr "Nueva Dirección"
+
+#: .\clientes\templates\clientes\formulario.html:102
+msgid "Calle"
+msgstr "Calle"
+
+#: .\clientes\templates\clientes\formulario.html:103
+msgid "Ciudad"
+msgstr "Ciudad"
+
+#: .\clientes\templates\clientes\formulario.html:104
+msgid "Región"
+msgstr "Región"
+
+#: .\clientes\templates\clientes\formulario.html:105
+msgid "Código Postal"
+msgstr "Código Postal"
+
+#: .\clientes\templates\clientes\formulario.html:106
+#: .\clientes\templates\clientes\lista.html:20
+#: .\clientes\templates\clientes\lista_clientes.html:15
+msgid "Acciones"
+msgstr "Acciones"
+
+#: .\clientes\templates\clientes\formulario.html:118
+#: .\clientes\templates\clientes\lista.html:37
+#: .\clientes\templates\clientes\lista_clientes.html:31
+msgid "Editar"
+msgstr "Editar"
+
+#: .\clientes\templates\clientes\formulario.html:121
+#: .\clientes\templates\clientes\lista.html:40
+#: .\clientes\templates\clientes\lista_clientes.html:32
+msgid "Eliminar"
+msgstr "Eliminar"
+
+#: .\clientes\templates\clientes\formulario.html:126
+#: .\clientes\templates\clientes\lista_clientes.html:30
+msgid "No hay clientes registrados."
+msgstr "No hay clientes registrados."
+
+#: .\clientes\templates\clientes\formulario.html:158
+msgid "Este cliente no tiene direcciones registradas."
+msgstr "Este cliente no tiene direcciones registradas."
+
+#: .\clientes\templates\clientes\lista.html:4
+msgid "Lista de Clientes"
+msgstr "Lista de Clientes"
+
+#: .\clientes\templates\clientes\lista.html:15
+#: .\clientes\templates\clientes\lista_clientes.html:12
+msgid "Email"
+msgstr "Email"
+
+#: .\clientes\templates\clientes\lista.html:18
+msgid "Dirección"
+msgstr "Dirección"
+
+#: .\clientes\templates\clientes\lista_clientes.html:5
+#, fuzzy
+#| msgid "Lista de Clientes"
+msgid "*** Lista de Clientes ****"
+msgstr "*** Lista de Clientes ****"
+
+#: .\clientes\templates\clientes\login.html:5
+msgid "Iniciar Sesión"
+msgstr "Iniciar Sesión"
+
+#: .\clientes\templates\clientes\login.html:12
+msgid "Usuario"
+msgstr "Usuario"
+
+#: .\clientes\templates\clientes\login.html:14
+msgid "Contraseña"
+msgstr "Contraseña"
+
+#: .\clientes\templates\clientes\login.html:16
+msgid "Ingresar"
+msgstr "Ingresar"
+
+#: .\clientes\templates\layout.html:144
+msgid "Administración de Clientes"
+msgstr "Administración de Clientes"
+
+#: .\clientes\templates\layout.html:163
+msgid "Inicio"
+msgstr "Inicio"
+
+#: .\clientes\templates\layout.html:167
+msgid "Cerrar Sesión"
+msgstr "Cerrar Sesión"
+
+#: .\clientes\templates\layout.html:174
+msgid "Sistema de Gestión de Clientes"
+msgstr "Sistema de Gestión de Clientes"
+
+#: .\clientes\views.py:104
+msgid "Usuario o contraseña incorrectos"
+msgstr "Usuario o contraseña incorrectos"
+
+#: .\clientes\views.py:165
+msgid "Editar Dirección"
+msgstr "Editar Dirección"
+
+#: .\clientes\templates\clientes\lista.html:12
+msgid "Exportar a Excel"
+msgstr "Exportar a Excel"
+
+#: .\clientes\templates\clientes\lista.html:13
+msgid "Exportar a PDF"
+msgstr "Exportar a PDF"

@@ -1,17 +1,18 @@
 
 {% extends 'layout.html' %}
+{% load i18n %}
 {% block content %}
-<h2>Iniciar Sesión</h2>
+<h2>{% trans "Iniciar Sesión" %}</h2>
 {% if error %}
   <p style="color: red;">{{ error }}</p>
 {% endif %}
 
 <form method="post">
   {% csrf_token %}
-  <label>Usuario:</label>
+  <label>{% trans "Usuario" %}:</label>
   <input type="text" name="username">
-  <label>Contraseña:</label>
+  <label>{% trans "Contraseña" %}:</label>
   <input type="password" name="password">
-  <button type="submit">Ingresar</button>
+  <button type="submit">{% trans "Ingresar" %}</button>
 </form>
 {% endblock %}

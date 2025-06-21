@@ -1,12 +1,166 @@
-
 {% extends 'layout.html' %}
+{% load i18n %}
 {% block content %}
-<h2>{% if form.instance.pk %}Editar Cliente{% else %}Nuevo Cliente{% endif %}</h2>
-<form method="post">
+<h2>
+  {% if form.instance.pk %}
+     {% trans "Editar Cliente" %}
+  {% else %}
+    {% trans "Nuevo Cliente" %}
+  {% endif %}
+</h2>
+
+<form method="post" id="cliente-form">
   {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Guardar</button>
-  <a href="{% url 'lista_clientes' %}">Cancelar</a>
+  
+  <!-- Datos del Cliente -->
+  <fieldset>
+    <legend>{% trans "Datos del Cliente" %}</legend>
+    {{ form.non_field_errors }}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}
+        {{ field }}
+      </p>
+    {% endfor %}
+  </fieldset>
+
+  {% if not form.instance.pk %}
+    <!-- Crear cliente: permitir agregar direcciones -->
+    <fieldset id="direcciones-wrapper">
+      <legend>{% trans "Direcciones del Cliente" %}</legend>
+      {{ direccion_formset.management_form }}
+
+      <div id="direcciones-formset">
+        {% for form in direccion_formset %}
+          <div class="direccion-form" style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
+            {% for hidden in form.hidden_fields %}
+              {{ hidden }}
+            {% endfor %}
+            {% for field in form.visible_fields %}
+              {% if field.name != 'DELETE' %}
+                <p>
+                  {{ field.label_tag }} {{ field }}
+                </p>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <button type="button" id="agregar-direccion" style="margin-top: 1rem;">➕ {% trans "Agregar otra dirección" %}</button>
+    </fieldset>
+
+    <!-- Script para clonar formularios -->
+    <div id="direccion-empty-form" style="display: none;">
+      <div class="direccion-form" style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
+        __FORM_HTML__
+      </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const botonAgregar = document.getElementById('agregar-direccion');
+      const formsetDiv = document.getElementById('direcciones-formset');
+      const totalFormsInput = document.querySelector('#id_direcciones-TOTAL_FORMS');
+
+      const emptyFormHtml = formsetDiv.children[0].innerHTML.replace(/-0-/g, '-__prefix__');
+      document.getElementById('direccion-empty-form').innerHTML =
+        document.getElementById('direccion-empty-form').innerHTML.replace('__FORM_HTML__', emptyFormHtml);
+
+      botonAgregar.addEventListener('click', function () {
+        const totalForms = parseInt(totalFormsInput.value);
+        const newFormHtml = document.getElementById('direccion-empty-form').innerHTML.replace(/__prefix__/g, totalForms);
+
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = newFormHtml;
+        formsetDiv.appendChild(tempDiv.firstElementChild);
+
+        totalFormsInput.value = totalForms + 1;
+      });
+    });
+    </script>
+
+  {% else %}
+    <!-- Editar cliente: mostrar direcciones en modo lista -->
+    <br>
+    <fieldset>
+      <legend>{% trans "Direcciones Registradas" %}</legend>
+
+   <!--   <form method="get" action="{% url 'nueva_direccion' cliente.id %}" style="margin-bottom: 1rem;">
+        <button type="submit">➕ {% trans "Nueva Dirección" %}</button>
+      </form>
+    -->
+
+    <a href="{% url 'agregar_direccion' cliente.id %}" style="margin-bottom: 1rem; display: inline-block;">
+      ➕ {% trans "Nueva Dirección" %}
+    </a>
+  
+      {% if direcciones %}
+        <table border="1" cellpadding="8" cellspacing="0">
+          <thead>
+            <tr>
+              <th>{% trans "Calle" %}</th>
+              <th>{% trans "Ciudad" %}</th>
+              <th>{% trans "Región" %}</th>
+              <th>{% trans "Código Postal" %}</th>
+              <th>{% trans "Acciones" %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for d in direcciones %}
+              <tr class="{% cycle 'par' 'impar' %}">
+                <td>{{ d.calle }}</td>
+                <td>{{ d.ciudad }}</td>
+                <td>{{ d.region }}</td>
+                <td>{{ d.codigo_postal }}</td>
+                <td>
+                {% if perms.clientes.change_cliente %}
+                    <a href="{% url 'editar_direccion' cliente.id d.id %}">✏️ {% trans 'Editar' %}</a> |
+                {% endif %}
+                {% if perms.clientes.change_cliente %}
+                    <a href="{% url 'eliminar_direccion' cliente.id d.id %}">🗑️ {% trans 'Eliminar' %}</a>
+                {% endif %}
+                </td>
+              </tr>
+            {% empty %}
+              <tr><td colspan="6">{% trans "No hay clientes registrados." %}</td></tr>
+            {% endfor %}          
+          </tbody>
+        </table>        
+
+        <style>
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+          }
+          th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+          }
+          thead {
+            background-color: #2c3e50;
+            color: white;
+          }
+          tr.par {
+            background-color: #f9f9f9;
+          }
+          tr.impar {
+            background-color: #eaeaea;
+          }
+          tr:hover {
+            background-color: #d6eaf8;
+          }
+        </style>
+
+      {% else %}
+        <p>{% trans "Este cliente no tiene direcciones registradas." %}</p>
+      {% endif %}
+    </fieldset>
+  {% endif %}
+
+  <button type="submit">{% trans "Guardar" %}</button>
+  <a href="{% url 'lista_clientes' %}">{% trans "Cancelar" %}</a>
 </form>
 {% endblock %}
-

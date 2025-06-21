@@ -1,3 +1,4 @@
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="es">
@@ -87,43 +88,90 @@
     button:hover {
       background-color: #2980b9;
     }
-    input, select, textarea {
+    input, select {
       width: 100%;
       padding: 0.5rem;
       margin-bottom: 1rem;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
+    textarea {
+      width: 100%;
+      height: 80px;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }    
     .logo {
       /*height: 40px;*/
       object-fit: contain;
     }
+
+    .language-button {
+      border: none;
+      padding: 0;
+      background: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .language-button:focus {
+      border: none;
+      outline: none;
+      box-shadow: none;
+    }
+    
+    .language-button:hover {
+      background: none;
+      cursor: pointer;
+    }
+
+    /* Estilos cuando el ratón se mueve sobre el botón */
+    button:hover {
+      background-color: #2980b9; /* Cambia el fondo al pasar el ratón */
+      cursor: pointer; /* Cambia el cursor a una mano para indicar interacción */
+    }
+
   </style>
 </head>
 
 <body>
-    <header>
+    <header id="logotipo">
         <div style="display: flex; align-items: center;">
             {% load static %}
-          <!--  <img src="{% static 'images/logo-cidla.png' %}" alt="Logo" class="logo"> -->
-            <img src="clientes/static/images/logo-cidla.png" alt="Logo" class="logo">
-            <h1>Administración de Clientes</h1>
+            <img src="{% static 'images/logo-cidla.png' %}" alt="Logo" class="logo">
+            <h1>{% trans "Administración de Clientes" %}</h1>
         </div>
+
+        <div style="display: flex; align-items: right; gap: 5px; height: 48px">
+          <form action="{% url 'set_language' %}" method="post">
+              {% csrf_token %}
+              <input name="next" type="hidden" value="{{ request.path }}">
+              <button type="submit" name="language" value="es" class="language-button">
+                  <img src="{% static 'images/es.png' %}" alt="Español" style="width:24px; height:24px; object-fit:contain;">
+              </button>
+              <button type="submit" name="language" value="en" class="language-button">
+                  <img src="{% static 'images/en.png' %}" alt="English" style="width:24px; height:24px; object-fit:contain;">
+              </button>
+          </form>
+        </div>
+
     </header>
     <div class="container">
         <nav>
-            <a href="/">🏠 Inicio</a>
+            <a href="/">🏠 {% trans "Inicio" %}</a>
             {% if perms.clientes.change_cliente %}
-              <a href="/nuevo/">➕ Nuevo Cliente</a>
+              <a href="/nuevo/">➕ {% trans "Nuevo Cliente" %}</a>
             {% endif %}
-            <a href="/logout/">🚪 Cerrar Sesión</a>
+            <a href="/logout/">🚪 {% trans "Cerrar Sesión" %}</a>
         </nav>
         <main>
           {% block content %}{% endblock %}
         </main>
     </div>
     <footer>
-        &copy; 2025 Sistema de Gestión de Clientes
+        &copy; 2025 {% trans "Sistema de Gestión de Clientes" %}
     </footer>
 </body>
 
