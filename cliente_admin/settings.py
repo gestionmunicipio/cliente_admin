@@ -132,8 +132,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'clientes/static'),
 ]
 
-
-
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 
