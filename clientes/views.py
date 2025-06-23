@@ -8,6 +8,7 @@ from django.forms import inlineformset_factory
 
 from django.contrib.auth.decorators import permission_required
 from django.utils.translation import gettext_lazy as _
+from django.db.models import Prefetch
 
 ### Exportar a Excel ####
 import openpyxl
