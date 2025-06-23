@@ -28,7 +28,9 @@ def lista_clientes(request):
     # DEBUG: imprime los permisos del usuario
     # print(request.user.get_all_permissions())
     
-    clientes = Cliente.objects.all()
+    clientes = Cliente.objects.prefetch_related(
+        Prefetch('direcciones', queryset=Direccion.objects.all())
+        
     return render(request, 'clientes/lista.html', {'clientes': clientes})
 
 # Agregar cliente
