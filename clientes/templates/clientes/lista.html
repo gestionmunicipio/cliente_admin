@@ -32,7 +32,15 @@
       <td>{{ cliente.email }}</td>
       <td>{{ cliente.telefono }}</td>
       <td>{{ cliente.rut }}</td>
-      <td>{{ cliente.direccion }}</td>
+      <td>
+        {% if cliente.direcciones.all %}
+            {{ cliente.direcciones.all.0.calle }},
+            {{ cliente.direcciones.all.0.ciudad }},
+            {{ cliente.direcciones.all.0.region }}
+        {% else %}
+            Sin dirección
+        {% endif %}
+      </td>
       <td>{{ cliente.estado }}</td>
       <td>
      <!--   <a href="{% url 'editar_cliente' cliente.id %}">✏️ Editar</a> |
